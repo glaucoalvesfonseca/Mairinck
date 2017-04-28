@@ -44,6 +44,14 @@ def encontre_ocorrencia():
 
 #Função só funciona dentro do for loop, devido ao nome da variável ocorrencia
 def adicionar_contato():
+    
+    #Verifica a data do último contato no chamado
+    data_ultimo_contato = driver.find_element_by_xpath('//*[@id="ctl00_body_uc_ContatosOcorrencia_dgContatosOcorrencia"]/tbody/tr[2]/td[2]').text
+    #Convertendo a data para datetime
+    data_ultimo_contato = datetime.strptime(data_ultimo_contato, '%d/%m/%Y %H:%M')
+    #Tempo entre o último contato e hoje
+    data_ultimo_contato = (hoje - data_ultimo_contato).total_seconds()
+    
     #Aguardar antes de dar o contato
     time.sleep(random.choice(range(0,20)))
     #Localizando campo de contato
@@ -51,7 +59,7 @@ def adicionar_contato():
     #Selecionando uma mensagem aleatória
     formulario_de_contato.send_keys(random.choice(mensagem_aleatoria))
     #enviando contato
-    driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
+    #--driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
     #Voltar a página inicial
     driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
     logging.info('================================== CONTATO ADICIONADO ==================================')
