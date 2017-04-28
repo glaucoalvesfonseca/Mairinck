@@ -8,3 +8,6 @@ A demanda para criar esse *script* veio da necessidade de cobrar diariamente a F
 O *script* Mairinck funciona da seguinte forma: ele acessará o WebCRM da Fácil todos os dias entre 8 e 8:30 - horário este configurado no servidor UNI-DTC-025 - e escolherá um funcionário aleatório da TI para ser o responsável pela cobrança.
 
 Mairinck irá entrar em cada uma das ocorrências para informar uma mensagem aleatória cobrando a Software House, e gerará *logs* durante o processo.
+
+## Dependencies
+<a href='https://github.com/paulozip/Mairinck/blob/master/depedencies.md'>Clique aqui para acessar o arquivo com os requisitos para executar o *script*</a>
