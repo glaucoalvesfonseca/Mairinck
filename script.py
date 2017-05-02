@@ -50,20 +50,23 @@ def adicionar_contato():
     #Convertendo a data para datetime
     data_ultimo_contato = datetime.strptime(data_ultimo_contato, '%d/%m/%Y %H:%M')
     #Tempo entre o último contato e hoje
-    data_ultimo_contato = (hoje - data_ultimo_contato).total_seconds()
-    
-    #Aguardar antes de dar o contato
-    time.sleep(random.choice(range(0,20)))
-    #Localizando campo de contato
-    formulario_de_contato = driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$txtContato')
-    #Selecionando uma mensagem aleatória
-    formulario_de_contato.send_keys(random.choice(mensagem_aleatoria))
-    #enviando contato
-    #--driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
-    #Voltar a página inicial
-    driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
-    logging.info('================================== CONTATO ADICIONADO ==================================')
-    acessar_ocorrencias()
+    data_ultimo_contato = int((hoje - data_ultimo_contato).total_seconds())
+    print(data_ultimo_contato)
+
+    #Verifica se o último contato foi inserido a pelo menos um dia
+    if data_ultimo_contato > 86400:        
+        #Aguardar x segundos antes de dar o contato
+        time.sleep(random.choice(range(0,20)))
+        #Localizando campo de contato
+        formulario_de_contato = driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$txtContato')
+        #Selecionando uma mensagem aleatória
+        formulario_de_contato.send_keys(random.choice(mensagem_aleatoria))
+        #enviando contato
+        #--driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
+        #Voltar a página inicial
+        driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
+        logging.info('================================== CONTATO ADICIONADO ==================================')
+        acessar_ocorrencias()
 
 mensagem_aleatoria = ['Alguma novidade?', 'Alguma novidade quanto a essa ocorrência?', 'Prezados,\nAlguma novidade sobre esta ocorrência?']
 
