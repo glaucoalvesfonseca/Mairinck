@@ -76,7 +76,7 @@ def adicionar_contato():
     
     #Verifica se hoje é segunda-feira. Se for, o script verificará se o último contato tem pelo menos 3 dias
     if hoje.day == 2:
-        if data_ultimo_contato > 259200:
+        if data_ultimo_contato >= 259200:
             #Aguardar x segundos antes de dar o contato
             time.sleep(random.choice(range(0,20)))
             #Localizando campo de contato
@@ -98,7 +98,7 @@ def adicionar_contato():
     #Se não for segunda-feira:
     else:
         #Verifica se o último contato foi inserido a pelo menos 24 horas
-        if data_ultimo_contato > 86400:        
+        if data_ultimo_contato >= 86400:        
             #Aguardar x segundos antes de dar o contato
             time.sleep(random.choice(range(0,20)))
             #Localizando campo de contato
