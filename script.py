@@ -3,11 +3,16 @@ import time
 import random
 import logging
 from datetime import datetime
+import os
 
+#Caminho onde o script está
+caminho = os.path.abspath(os.path.dirname(__file__)) + '/'
+
+#Data de hoje
 hoje = datetime.today()
 
 #Criando arquivo de log
-logging.basicConfig(filename='{}-{}-{}.log'.format(hoje.day, hoje.month, hoje.year), filemode='w', level=logging.DEBUG)
+logging.basicConfig(filename=caminho + '{}-{}-{}.log'.format(hoje.day, hoje.month, hoje.year), filemode='w', level=logging.DEBUG)
 
 #Credenciais dos usuários
 def escolhe_usuario(numero_aleatorio):
