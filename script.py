@@ -73,7 +73,7 @@ def adicionar_contato():
     #Tempo entre o último contato e hoje
     data_ultimo_contato = int((hoje - data_ultimo_contato).total_seconds())    
 
-    #Verifica se o último contato foi inserido a pelo menos um dia
+    #Verifica se o último contato foi inserido a pelo menos 24 horas
     if data_ultimo_contato > 86400:        
         #Aguardar x segundos antes de dar o contato
         time.sleep(random.choice(range(0,20)))
@@ -81,14 +81,22 @@ def adicionar_contato():
         formulario_de_contato = driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$txtContato')
         #Selecionando uma mensagem aleatória
         formulario_de_contato.send_keys(random.choice(mensagem_aleatoria))
-        #enviando contato
+        #Enviando contato
         #--driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
         #Voltar a página inicial
         driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
+        #Adicionando contato ao log
         logging.info('================================== CONTATO ADICIONADO ==================================')
+        #Voltando a página inicial
+        acessar_ocorrencias()
+    #Se não encontrar a ocorrência, segue para a próxima
+    else:
+        driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
+        #Voltando a página inicial
         acessar_ocorrencias()
 
-mensagem_aleatoria = ['Alguma novidade?', 'Alguma novidade quanto a essa ocorrência?', 'Prezados,\nAlguma novidade sobre esta ocorrência?']
+#Mensagem aleatória para adicionar nas ocorrências
+mensagem_aleatoria = ['Alguma novidade?', 'Alguma novidade quanto a essa ocorrência?', 'Prezados,\nAlguma novidade sobre esta ocorrência?', 'Como está o andamento da ocorrência?', 'Prezados,\nQual o status da ocorrência?', 'Prezados,\nComo está o andamento desta ocorrência?', 'Prezados,\nComo está o andamento desta ocorrência? Podemos ajudar em algo?']
 
 #Iniciando navegador
 driver = webdriver.Chrome('C:\Temp\chromedriver.exe')
