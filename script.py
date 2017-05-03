@@ -106,7 +106,7 @@ def adicionar_contato():
             #Selecionando uma mensagem aleatória
             formulario_de_contato.send_keys(random.choice(mensagem_aleatoria))
             #Enviando contato
-            #--driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
+            driver.find_element_by_name('ctl00$body$uc_ContatosOcorrencia$btnGravar').click()
             #Voltar a página inicial
             driver.find_element_by_id('ctl00_body_lnkBtnVoltar').click()
             #Adicionando contato ao log
