@@ -96,8 +96,8 @@ def adicionar_contato():
             acessar_ocorrencias()
     #Se não for segunda-feira:
     else:
-        #Verifica se o último contato foi inserido a pelo menos 24 horas
-        if data_ultimo_contato >= 86400:        
+        #Verifica se o último contato foi inserido a pelo menos 22 horas
+        if data_ultimo_contato >= 79200:        
             #Aguardar x segundos antes de dar o contato
             time.sleep(random.choice(range(0,20)))
             #Localizando campo de contato
