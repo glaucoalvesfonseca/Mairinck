@@ -173,7 +173,7 @@ driver.close
 #Envio de e-mail com o log
 assunto = 'Mairinck - Arquivo de log de {}-{}-{}'.format(hoje.day, hoje.month, hoje.year)
 remetente = 'T.A.R.S'
-destinatario = 'pvasconcellos@araruama.unimed.com.br'
+destinatario = 'suporte@araruama.unimed.com.br'
 mensagem = 'Segue anexo arquivo log de hoje do Mairinck.\n\nAt.te,\nT.A.R.S'
 anexo = caminho + '{}-{}-{}.log'.format(hoje.day, hoje.month, hoje.year)
 
