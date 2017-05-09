@@ -16,9 +16,8 @@ def enviar_email(assunto, remetente, destinatario, mensagem, anexo=False):
     msg['To'] = destinatario
 
     #Verifica se deseja enviar anexo
-    if anexo == False:
-        pass
-    else:
+    if anexo:
+        msg.add_header('Content-Disposition', 'attachment', filename=anexo)
         msg.attach(MIMEMultipart(anexo))
 
     #Enviando e-mail
@@ -31,4 +30,4 @@ destinatario = 'pvasconcellos@araruama.unimed.com.br'
 mensagem = 'Mensagem de teste'
 anexo = os.path.abspath(os.path.dirname(__file__) + '\\teste.txt')
 
-enviar_email(assunto, remetente, destinatario, mensagem, anexo=anexo)
+enviar_email(assunto, remetente, destinatario, mensagem, anexo=False)
