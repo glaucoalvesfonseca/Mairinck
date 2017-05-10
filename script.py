@@ -4,6 +4,7 @@ import random
 import logging
 from datetime import datetime
 import os
+from enviar_email import enviar_email
 
 #Caminho onde o script está
 caminho = os.path.abspath(os.path.dirname(__file__)) + '/'
@@ -168,3 +169,13 @@ for pagina in range(int(total_de_paginas[-1]) + 1):
 #Fechando navegador
 logging.info('================================== SCRIPT FINALIZADO ==================================')
 driver.close
+
+#Envio de e-mail com o log
+assunto = 'Mairinck - Arquivo de log de {}-{}-{}'.format(hoje.day, hoje.month, hoje.year)
+remetente = 'T.A.R.S'
+destinatario = 'suporte@araruama.unimed.com.br'
+mensagem = 'Segue anexo arquivo log de hoje do Mairinck.\n\nAt.te,\nT.A.R.S'
+anexo = caminho + '{}-{}-{}.log'.format(hoje.day, hoje.month, hoje.year)
+
+enviar_email(assunto, remetente, destinatario, mensagem, anexo=anexo,nome_anexo='Log Mairinck de {}-{}-{}.log'.format(hoje.day, hoje.month, hoje.year))
+
