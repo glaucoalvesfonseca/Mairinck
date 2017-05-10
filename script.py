@@ -30,7 +30,6 @@ def escolhe_usuario(numero_aleatorio):
         credenciais = ['glauco','facil']
     return credenciais
 
-#Essa função acessa a página de ocorrências pendentes com a Fácil
 def acessar_ocorrencias():
     """
     A função acessar_ocorrencias serve apenas para acessar a página de ocorrências pendentes com a Fácil. Ao invés de adicionar essas três linhas
